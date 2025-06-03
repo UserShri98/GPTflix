@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateCredentials } from "../utils/validate";
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ const Login=()=>{
 
    const [errorMessage,setErrorMessage]=useState()
 
+   const name=useRef(null);
    const email=useRef(null);
    const password=useRef(null);
 
@@ -33,8 +34,15 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    console.log(user)
+    updateProfile(user, {
+  displayName: name.current.value, photoURL: "https://img.freepik.com/free-psd/cute-brown-white-dog-scene_23-2150179279.jpg?semt=ais_hybrid&w=740"
+}).then(() => {
         navigate("/browse")
+}).catch((error) => {
+     setErrorMessage(error.message)
+});
+
+    console.log(user)
 
     // ...
   })

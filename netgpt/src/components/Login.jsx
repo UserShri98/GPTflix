@@ -3,12 +3,12 @@ import Header from "./Header";
 import { validateCredentials } from "../utils/validate";
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 const Login=()=>{
 
-   const navigate=useNavigate();
+   const dispatch=useDispatch();
      
    const [signInForm,setSignInForm]=useState(true);
 
@@ -37,12 +37,12 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
     updateProfile(user, {
   displayName: name.current.value, photoURL: "https://img.freepik.com/free-psd/cute-brown-white-dog-scene_23-2150179279.jpg?semt=ais_hybrid&w=740"
 }).then(() => {
-        navigate("/browse")
+       const {uid,email,displayName,photoURL} = auth.currentUser;
+        dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
 }).catch((error) => {
      setErrorMessage(error.message)
 });
 
-    console.log(user)
 
     // ...
   })
@@ -57,8 +57,6 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user)
-        navigate("/browse")
 
     // ...
   })

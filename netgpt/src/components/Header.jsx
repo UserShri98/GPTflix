@@ -39,7 +39,7 @@ const Header = () => {
     },[])
 
   return (
-    <div className="flex justify-between items-center px-8 py-4 w-screen bg-gradient-to-b from-black z-10 absolute">
+<div className="flex justify-between items-center px-8 py-4 w-screen z-10 absolute">
       {/* LEFT: Netflix Logo */}
       <img
         className="w-40"

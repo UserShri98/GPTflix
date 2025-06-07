@@ -18,3 +18,4 @@ export const BG_URL=
 
 export const SUPPORTED_LANGUAGES=[{identifier:"en",name:"English"},{identifier:"hindi",name:"Hindi"},{identifier:"spanish",name:"Spanish"}]
 
+export const OPENAI_KEY="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"

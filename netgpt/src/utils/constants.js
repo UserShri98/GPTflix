@@ -17,3 +17,5 @@ export const BG_URL=
 "https://assets.nflxext.com/ffe/siteui/vlv3/af2fac72-d956-4952-8686-4d45d359d78c/web/IN-en-20250526-TRIFECTA-perspective_5db3e163-56f7-47c7-9a65-b79b9d76bf24_large.jpg"
 
 export const SUPPORTED_LANGUAGES=[{identifier:"en",name:"English"},{identifier:"hindi",name:"Hindi"},{identifier:"spanish",name:"Spanish"}]
+
+export const OPENAI_KEY="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"

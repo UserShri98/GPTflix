@@ -24,8 +24,7 @@ const Login=()=>{
    }
 
    const handleValidate=()=>{
-    // console.log(email.current.value);
-    // console.log(password.current.value);
+   
 
  const message=validateCredentials(email.current.value,password.current.value)
 
@@ -33,7 +32,7 @@ const Login=()=>{
 
 createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
-    // Signed up 
+  
     const user = userCredential.user;
     updateProfile(user, {
   displayName: name.current.value, photoURL: "https://img.freepik.com/free-psd/cute-brown-white-dog-scene_23-2150179279.jpg?semt=ais_hybrid&w=740"
@@ -45,21 +44,18 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
 });
 
 
-    // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     setErrorMessage(errorCode + "-" + errorMessage)
-    // ..
   });
    }else{
        signInWithEmailAndPassword(auth,  email.current.value, password.current.value)
   .then((userCredential) => {
-    // Signed in 
     const user = userCredential.user;
 
-    // ...
+   
   })
   .catch((error) => {
     const errorCode = error.code;
